@@ -527,7 +527,7 @@ module.exports.listen = function(host) {
 
   var setHost = '0.0.0.0';
 
-  if(host !=undefined || host !=''){
+  if(host !==undefined || host !==''){
       setHost = host;
   }
 
@@ -543,7 +543,7 @@ module.exports.listen = function(host) {
       console.log("I see no data/port file, defaulting to port " + port);
     }
 
-    if(host ==undefined){
+    if(host === undefined || host===''){
         try {
           // Stagecoach option
           setHost = fs.readFileSync(options.rootDir + '/data/host', 'UTF-8').replace(/\s+$/, '');
