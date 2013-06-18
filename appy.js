@@ -520,9 +520,18 @@ function appBootstrap(callback) {
   }
 }
 
-module.exports.listen = function() {
+
+module.exports.listen = function(host) {
   // Default port for dev
   var port = 3000;
+
+  var setHost = '0.0.0.0';
+
+  if(host !=undefined || host !=''){
+      setHost = host;
+  }
+
+
   // Heroku
   if (process.env.PORT) {
     port = process.env.PORT;
@@ -533,9 +542,19 @@ module.exports.listen = function() {
     } catch (err) {
       console.log("I see no data/port file, defaulting to port " + port);
     }
+
+    if(host ==undefined){
+        try {
+          // Stagecoach option
+          setHost = fs.readFileSync(options.rootDir + '/data/host', 'UTF-8').replace(/\s+$/, '');
+        } catch (err) {
+          console.log("I see no data/host file, defaulting to host" + setHost);
+        }
+    }
   }
-  console.log("Listening on port " + port);
-  app.listen(port);
+
+  console.log("Listening on "+setHost+":"+ port);
+  app.listen(port,setHost);
 }
 
 
