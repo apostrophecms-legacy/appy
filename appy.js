@@ -527,7 +527,7 @@ module.exports.listen = function(host) {
 
   var setHost = '0.0.0.0';
 
-  if(host !==undefined || host !==''){
+  if(host !==undefined || host ===''){
       setHost = host;
   }
 
