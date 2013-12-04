@@ -11,6 +11,7 @@ var dirname = require('path').dirname;
 var lessMiddleware = require('less-middleware');
 var passwordHash = require('password-hash');
 var clone = require('clone');
+var expressValidator = require('express-validator');
 
 var options;
 var db;
@@ -420,6 +421,7 @@ function appBootstrap(callback) {
   }
 
   app.use(express.bodyParser());
+  app.use(expressValidator(options.expressValidator));
   app.use(express.cookieParser());
 
   // Express sessions let us remember the mood the user wanted while they are off logging in on twitter.com
