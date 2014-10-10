@@ -22,7 +22,8 @@
     "mongodb": "1.4.8",
     "async": "~0.2.9",
     "connect-mongo": "~0.3.3",
-    "clone": "~0.1.11"
+    "clone": "~0.1.11",
+    "express-validator": "~1.0.1"
   },
   "devDependencies": {},
   "optionalDependencies": {},
