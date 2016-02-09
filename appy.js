@@ -14,7 +14,6 @@ var passwordHash = require('password-hash');
 var clone = require('clone');
 var bless = require('bless');
 var path = require('path');
-
 var options, globalOptions;
 var db;
 var app, baseApp;
@@ -119,8 +118,18 @@ var authStrategies = {
           }
           return callback(null, user, args);
         }
+        var match = emailMatch(username);
         var user = _.find(options.users, function(user) {
-          return (user.username === username) || (user.email === username);
+          if (user.username === username) {
+            return true;
+          }
+          // World's tiniest mongodb match evaluator: if it's an object
+          // assume it's a regex and call test on it. If it's not, assume
+          // it's a string and look for equality
+          if (typeof(match) === 'object') {
+            return match.test(user.email);
+          }
+          return match === user.email;
         });
         if (user) {
           if (user.password === password) {
@@ -144,7 +153,7 @@ var authStrategies = {
           return done(null, false, { message: 'Invalid username or password' });
         }
         var users = module.exports[collection];
-        var criteria = { $or: [ { username: username }, { email: username } ] };
+        var criteria = { $or: [ { username: username }, { email: emailMatch(username) } ] };
         if (options.extraLoginCriteria) {
           criteria = { $and: [ criteria, options.extraLoginCriteria ] };
         }
@@ -178,6 +187,15 @@ var authStrategies = {
             return done(null, false, { message: 'Invalid username or password' });
           }
         });
+
+        function emailMatch(email) {
+          if (options.emailMatch) {
+            // Call emailMatch option which will likely return a regex
+            return options.emailMatch(email);
+          }
+          // Just do a string match
+          return email;
+        }
       }
     ));
 
