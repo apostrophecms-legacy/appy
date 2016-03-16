@@ -568,7 +568,7 @@ function appBootstrap(callback) {
         compress: true,
       }));
     }
-    app.use(express.static(options.static));
+    app.use(express.static(options.static, options.staticOptions));
   }
 
   app.use(express.bodyParser());
@@ -875,4 +875,3 @@ function prefixCssUrls(css) {
 // In case you need to compile CSS in a compatible way
 // elsewhere in your app
 module.exports.prefixCssUrls = prefixCssUrls;
-
