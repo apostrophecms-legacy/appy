@@ -1,5 +1,13 @@
 # Appy
 
+## DEPRECATED for new projects
+
+This module is used to support Apostrophe 0.5.x projects. Apostrophe 2.x does not require Appy. We have no plans to upgrade it in future, so you should migrate to using its dependencies directly.
+
+This module requires the `oh-ten-bc` module which monkeypatches various nodejs modules to be more 0.10.x compatible. You have been warned.
+
+## OK, reading on...
+
 <a href="http://apostrophenow.org/"><img src="https://raw.github.com/punkave/appy/master/logos/logo-box-madefor.png" align="right" /></a>
 
 Bootstraps a typical Express 3.0 app with even less fuss than usual. Makes a bunch of bold assumptions that are spot on for us and allow us to get moving swiftly. If they work for you too... awesome! If not, no worries. Appy isn't doing anything you can't do yourself in an hour or two.
@@ -316,7 +324,3 @@ If you are using the LESS middleware and are generating more than 4,095 CSS rule
 Feel free to open issues on [github](http://github.com/punkave/appy).
 
 <a href="http://punkave.com/"><img src="https://raw.github.com/punkave/appy/master/logos/logo-box-builtby.png" /></a>
-
-
-
-

@@ -2,7 +2,7 @@
   "author": "P'unk Avenue <team@punkave.com> (http://punkave.com/)",
   "name": "appy",
   "description": "Bootstrap a typical Express 3.0 app with even less fuss than usual. Makes a bunch of bold assumptions that may or may not suit you.",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "homepage": "https://github.com/punkave/appy",
   "repository": {
     "type": "git",
@@ -24,7 +24,8 @@
     "passport": "~0.1.12",
     "passport-local": "~0.1.6",
     "passport-twitter": "~0.1.4",
-    "password-hash": "~1.2.x"
+    "password-hash": "~1.2.x",
+    "oh-ten-bc": "^0.1.0"
   },
   "devDependencies": {},
   "optionalDependencies": {},

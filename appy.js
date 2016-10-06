@@ -1,5 +1,8 @@
 /* jshint node:true */
 
+// Create a node 0.10 compatible environment (to the extent possible and necessary)
+require('oh-ten-bc');
+
 var express = require('express');
 var _ = require('lodash');
 var passport = require('passport');
@@ -875,4 +878,3 @@ function prefixCssUrls(css) {
 // In case you need to compile CSS in a compatible way
 // elsewhere in your app
 module.exports.prefixCssUrls = prefixCssUrls;
-
