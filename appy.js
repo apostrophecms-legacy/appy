@@ -1,3 +1,5 @@
+require('oh-ten-bc');
+
 var express = require('express');
 var _ = require('lodash');
 var passport = require('passport');
@@ -713,4 +715,3 @@ function prefixMatch(prefix, url)
   }
   return false;
 }
-

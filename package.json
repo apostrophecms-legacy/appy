@@ -2,7 +2,7 @@
   "author": "P'unk Avenue <team@punkave.com> (http://punkave.com/)",
   "name": "appy",
   "description": "Bootstrap a typical Express 3.0 app with even less fuss than usual. Makes a bunch of bold assumptions that may or may not suit you.",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "homepage": "https://github.com/boutell/appy",
   "repository": {
     "type": "git",
@@ -10,6 +10,7 @@
   },
   "main": "appy.js",
   "dependencies": {
+    "oh-ten-bc": "^0.1.0",
     "express": "~3.3.0",
     "lodash": "2.4.x",
     "passport": "~0.1.12",
