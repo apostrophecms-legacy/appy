@@ -65,7 +65,7 @@ var authStrategies = {
     // Redirect the user to Twitter for authentication.  When complete, Twitter
     // will redirect the user back to the application at
     // /auth/twitter/callback
-    app.get('/login', passport.authenticate('twitter'));
+    app.get(globalOptions.loginUrl, passport.authenticate('twitter'));
 
     // Twitter will redirect the user to this URL after approval.  Finish the
     // authentication process by attempting to obtain an access token.  If
@@ -259,7 +259,7 @@ var authStrategies = {
       }
     });
 
-    app.get('/login', function(req, res) {
+    app.get(globalOptions.loginUrl, function(req, res) {
       var message = req.flash('error');
       if (Array.isArray(message) && message.length) {
         // Why is it an array? Well, whatever
@@ -293,7 +293,7 @@ var authStrategies = {
           '<% if (message) { %>' +
           '<h3><%= message %></h3>' +
           '<% } %>' +
-          '<form action="' + (globalOptions.prefix || '') + '/login" method="post">' +
+          '<form action="' + (globalOptions.prefix || '') + globalOptions.loginUrl + '" method="post">' +
             '<div>' +
             '<label>Username</label>' +
             '<input type="text" name="username" /><br/>' +
@@ -324,9 +324,9 @@ var authStrategies = {
         res.send(options.template(data));
       }
     });
-    app.post('/login',
+    app.post(globalOptions.loginUrl,
       passport.authenticate('local',
-        { failureRedirect: '/login', failureFlash: true }),
+        { failureRedirect: globalOptions.loginUrl, failureFlash: true }),
       function(req, res) {
         if (options.redirect) {
           // Send the response back to app.js to check permissions.
@@ -351,6 +351,10 @@ var authStrategies = {
 module.exports.bootstrap = function(optionsArg)
 {
   globalOptions = options = optionsArg;
+  
+  if (!globalOptions.loginUrl) {
+    globalOptions.loginUrl = '/login';
+  }
 
   if (options.log) {
     log = options.log;
@@ -698,7 +702,7 @@ function appBootstrap(callback) {
     {
       options.unlocked = [];
     }
-    _.each(['/login', '/logout', '/twitter-auth'], function(url) {
+    _.each([globalOptions.loginUrl, '/logout', '/twitter-auth'], function(url) {
       if (!_.include(options.unlocked, url))
       {
         options.unlocked.push(url);
@@ -832,7 +836,7 @@ function securityMiddleware(req, res, next) {
 
   if (!req.user) {
     req.session.afterLogin = req.originalUrl;
-    res.redirect(302, '/login');
+    res.redirect(302, globalOptions.loginUrl);
     return;
   } else {
     next();

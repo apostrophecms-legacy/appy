@@ -1,8 +1,8 @@
 {
   "author": "P'unk Avenue <team@punkave.com> (http://punkave.com/)",
   "name": "appy",
-  "description": "Bootstrap a typical Express 3.0 app with even less fuss than usual. Makes a bunch of bold assumptions that may or may not suit you.",
-  "version": "0.5.13",
+  "description": "Bootstrap an Express 3.0 app. Legacy projects only.",
+  "version": "0.5.14",
   "homepage": "https://github.com/punkave/appy",
   "repository": {
     "type": "git",

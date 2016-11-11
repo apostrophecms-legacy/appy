@@ -259,6 +259,10 @@ If you are using the LESS middleware and are generating more than 4,095 CSS rule
 
 ## Changelog
 
+0.5.14: `loginUrl` option for situtions where `/login` is not acceptable.
+
+0.5.13: deprecated the module and added a dependency on `oh-ten-bc` which monkeypatches newer nodejs to be compatible with some 0.10 functionality (again, the module is deprecated now; we don't recommend this strategy for new work).
+
 0.5.12: new `emailMatch` option to the local strategy. If provided, this must be a function which returns either a string (for a literal match) or a regular expression (for a case insensitive match or other fuzzy match). This will be used to compare email addresses to what the user typed in the username field, for both hardcoded and mongodb users. The default behavior is unchanged.
 
 0.5.11: `log` option can be used to provide a function that takes an verb and an object containing details and logs that information as you see fit. `appy` invokes this function in various scenarios when users succeed or fail in logging in via the local strategy.
