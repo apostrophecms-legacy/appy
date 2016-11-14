@@ -2,7 +2,7 @@
   "author": "P'unk Avenue <team@punkave.com> (http://punkave.com/)",
   "name": "appy",
   "description": "Bootstrap an Express 3.0 app. Legacy projects only.",
-  "version": "0.5.14",
+  "version": "0.5.15",
   "homepage": "https://github.com/punkave/appy",
   "repository": {
     "type": "git",

@@ -259,7 +259,9 @@ If you are using the LESS middleware and are generating more than 4,095 CSS rule
 
 ## Changelog
 
-0.5.14: `loginUrl` option for situtions where `/login` is not acceptable.
+0.5.15: `logoutUrl` option for situations where `/logout` is not acceptable.
+
+0.5.14: `loginUrl` option for situations where `/login` is not acceptable.
 
 0.5.13: deprecated the module and added a dependency on `oh-ten-bc` which monkeypatches newer nodejs to be compatible with some 0.10 functionality (again, the module is deprecated now; we don't recommend this strategy for new work).
 

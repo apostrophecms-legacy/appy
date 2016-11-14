@@ -355,6 +355,9 @@ module.exports.bootstrap = function(optionsArg)
   if (!globalOptions.loginUrl) {
     globalOptions.loginUrl = '/login';
   }
+  if (!globalOptions.logoutUrl) {
+    globalOptions.logoutUrl = '/logout';
+  }
 
   if (options.log) {
     log = options.log;
@@ -702,7 +705,7 @@ function appBootstrap(callback) {
     {
       options.unlocked = [];
     }
-    _.each([globalOptions.loginUrl, '/logout', '/twitter-auth'], function(url) {
+    _.each([globalOptions.loginUrl, globalOptions.logoutUrl, '/twitter-auth'], function(url) {
       if (!_.include(options.unlocked, url))
       {
         options.unlocked.push(url);
@@ -751,7 +754,7 @@ function appBootstrap(callback) {
       options.auth.options.beforeSignin = options.beforeSignin;
       strategy(options.auth.options);
 
-      app.get('/logout', function(req, res)
+      app.get(globalOptions.logoutUrl, function(req, res)
       {
         req.logOut();
         res.redirect('/');
