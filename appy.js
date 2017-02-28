@@ -1,5 +1,7 @@
 /* jshint node:true */
 
+console.log('appy');
+
 // Create a node 0.10 compatible environment (to the extent possible and necessary)
 require('oh-ten-bc');
 
@@ -753,11 +755,15 @@ function appBootstrap(callback) {
       // custom auth strategies need to be able to see it
       options.auth.options.beforeSignin = options.beforeSignin;
       strategy(options.auth.options);
-
       app.get(globalOptions.logoutUrl, function(req, res)
       {
-        req.logOut();
-        res.redirect('/');
+        return req.session.destroy(function(err) {
+          if (err) {
+            // There's not a lot we can do about it
+            console.error(err);
+          }
+          res.redirect('/');
+        });
       });
     }
 
