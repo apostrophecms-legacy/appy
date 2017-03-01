@@ -1,7 +1,5 @@
 /* jshint node:true */
 
-console.log('appy');
-
 // Create a node 0.10 compatible environment (to the extent possible and necessary)
 require('oh-ten-bc');
 

@@ -259,6 +259,8 @@ If you are using the LESS middleware and are generating more than 4,095 CSS rule
 
 ## Changelog
 
+0.5.17: stray `console.log` statement removed. No functional issues.
+
 0.5.16: the logout route now destroys the user session completely for maximum security. The logout method added to `req` by the `passport` module only deletes the property that causes `req.user` to be loaded. However end users generally expect logging out to create a 100% clean environment with no potential links to them, their activities or their identity.
 
 0.5.15: `logoutUrl` option for situations where `/logout` is not acceptable.
