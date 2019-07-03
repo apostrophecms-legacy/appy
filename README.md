@@ -259,6 +259,8 @@ If you are using the LESS middleware and are generating more than 4,095 CSS rule
 
 ## Changelog
 
+0.6.0: uses the MongoDB 2.x driver, which appears to have enough bc, and a suitable version of `connect-mongo`. No other changes. We're trying this out on a few legacy sites that must coexist with sites that require newer versions of Node.js.
+
 0.5.17: stray `console.log` statement removed. No functional issues.
 
 0.5.16: the logout route now destroys the user session completely for maximum security. The logout method added to `req` by the `passport` module only deletes the property that causes `req.user` to be loaded. However end users generally expect logging out to create a 100% clean environment with no potential links to them, their activities or their identity.
